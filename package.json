@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "watch": "node_modules/.bin/nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/smooshi/fullStack_week3/issues"
   },
-  "homepage": "https://github.com/smooshi/fullStack_week3#readme"
+  "homepage": "https://github.com/smooshi/fullStack_week3#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "node-datetime": "^2.0.6",
+    "postman": "^0.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12"
+  }
 }
