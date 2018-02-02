@@ -2,8 +2,11 @@ const http = require('http')
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const morgan = require('morgan')
 
 app.use(bodyParser.json())
+morgan.token('json', function(req, res){ return JSON.stringify(req.body)})
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :json'))
 
 let persons = [
     {
@@ -37,6 +40,17 @@ let persons = [
   app.get('/', (req, res) => {
     res.send('<h1>Hello World!</h1>')
   })
+
+//   const logger = (request, response, next) => {
+//   console.log('Method:',request.method)
+//   console.log('Path:  ', request.path)
+//   console.log('Body:  ', request.body)
+//   console.log('---')
+//   next()
+// }
+//
+//   app.use(logger)
+
 
   app.get('/info', (req, res) => {
     let size = persons.length
