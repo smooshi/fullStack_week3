@@ -2,9 +2,9 @@
   "name": "viikko3",
   "version": "1.0.0",
   "description": "Fullstack ohjelmointi, viikko 3",
-  "main": "./src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "node index.js",
     "build": "react-scripts build",
     "watch": "node_modules/.bin/nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
