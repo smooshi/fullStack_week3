@@ -6,11 +6,11 @@ const morgan = require('morgan')
 const cors = require('cors')
 
 app.use(cors())
-
 app.use(bodyParser.json())
+app.use(express.static('build'))
+
 morgan.token('json', function(req, res){ return JSON.stringify(req.body)})
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :json'))
-app.use(express.static('build'))
 
 
 let persons = [
@@ -42,9 +42,9 @@ let persons = [
   ]
 
 
-  app.get('/', (req, res) => {
-    res.send('<h1>Hello World!</h1>')
-  })
+  // app.get('/', (req, res) => {
+  //   res.send('<h1>Hello World!</h1>')
+  // })
 
 //   const logger = (request, response, next) => {
 //   console.log('Method:',request.method)
@@ -65,11 +65,11 @@ let persons = [
     res.send('<p>Puhelinluettelossa on '+size+' henkilön tiedot </p>'+formatted)
   })
 
-  app.get('/persons', (req, res) => {
+  app.get('/api/persons', (req, res) => {
     res.json(persons)
   })
 
-  app.get('/persons/:id', (request, response) => {
+  app.get('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)
   const person= persons.find(person => person.id === id )
   if ( person ) {
@@ -79,14 +79,14 @@ let persons = [
   }
 })
 
-app.delete('/persons/:id', (request, response) => {
+app.delete('/api/persons/:id', (request, response) => {
   const id = Number(request.params.id)
   persons = persons.filter(person => person.id !== id)
 
   response.status(204).end()
 })
 
-  app.post('/persons', (request, response) => {
+  app.post('/api/persons', (request, response) => {
     const body = request.body
 
     if (body.name === undefined) {
