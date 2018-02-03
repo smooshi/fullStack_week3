@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 
 // korvaa url oman tietokantasi urlilla!
-const url = 'mongodb://testeri:testi@ds121118.mlab.com:21118/puhelinluettelo'
+//const url = 'mongodb://testeri:testi@ds121118.mlab.com:21118/puhelinluettelo'
+const url = process.env.MONGODB_URI
 
 mongoose.connect(url)
 mongoose.Promise = global.Promise;
