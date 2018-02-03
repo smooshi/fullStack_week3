@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
-
+if ( process.env.NODE_ENV !== 'production' ) {
+  require('dotenv').config()
+}
 // korvaa url oman tietokantasi urlilla!
 //const url = 'mongodb://testeri:testi@ds121118.mlab.com:21118/puhelinluettelo'
 const url = process.env.MONGODB_URI
